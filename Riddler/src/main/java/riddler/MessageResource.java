@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
  * @author ori
  */
 
-@Path("/message/{name}")
+@Path("/messages/names/{name}")
 @Service
 public class MessageResource {
 

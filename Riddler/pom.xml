@@ -21,6 +21,33 @@
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.jolokia</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>0.11.3</version>
+                <configuration>
+                    <sourceDirectory>docker</sourceDirectory>
+                    <images>
+                        <image>
+                            <name>eha/cc-riddler</name>
+                            <build>
+                                <assembly>
+                                    <dockerFileDir>.</dockerFileDir>
+                                    <descriptorRef>artifact</descriptorRef>
+                                </assembly>
+                            </build>
+                        </image>
+                    </images>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
     <dependencies>

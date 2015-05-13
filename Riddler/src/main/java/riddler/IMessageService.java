@@ -6,5 +6,7 @@ package riddler;
  */
 public interface IMessageService {
 
-    MessageResponse getGreeting(String name);
+    Message greet(String name);
+    
+    RecentMessagesResponse getRecentMessages();
 }

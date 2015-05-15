@@ -28,7 +28,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>SpringApplication</servlet-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>/messages/*</url-pattern>
     </servlet-mapping>
 
 </web-app>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Riddler</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script type="text/javascript" src="js/libs/angular.js/angular.js"></script>
+        <script type="text/javascript" src="js/riddler.js"></script>
+        <link rel="stylesheet" href="riddler.css" />
+    </head>
+    <body ng-app="riddlerApp" ng-controller="riddlerController as riddler">
+    <header>Riddler</header>
+
+    <hr/>
+    <div>
+        Get greeted here!
+        <form ng-submit="riddler.submitName(name)">
+            <label>Name:</label>
+            <input type="text" required ng-model="name" />
+            <input id="greetSubmit" type="submit" value="Submit"/>
+        </form>
+    </div>
+
+    <hr/>
+    <div>
+        <button ng-click="riddler.getRecent()">Get recent messages</button><br/>
+        <label>Last message:</label>{{riddler.lastMessage}}<br/>
+        <label>Displayed messages:</label> {{riddler.messageCount}}<br/><br/>
+        
+        <label>Messages:</label>
+        <table>
+            <tr ng-repeat="messageWrapper in riddler.messages">
+                <td>{{messageWrapper.message.content}}</td>
+            </tr>
+        </table>
+    </div>
+    </body>
+</html>

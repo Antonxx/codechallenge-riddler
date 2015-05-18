@@ -1,6 +1,7 @@
 package riddler;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -14,7 +15,7 @@ import org.springframework.stereotype.Service;
  * @author ori
  */
 
-@Path("/messages/names/{name}")
+@Path("/")
 @Service
 public class MessageResource {
 
@@ -25,14 +26,18 @@ public class MessageResource {
         this.messageService = messageService;
     }
     
-    private MessageResource() {
-        
-    }
-    
     @POST
+    @Path("/names/{name}")
     @Consumes(MediaType.TEXT_PLAIN)
     @Produces(MediaType.APPLICATION_JSON)
-    public MessageResponse greet(@PathParam("name") String name) {
-        return messageService.getGreeting(name);
+    public Message greet(@PathParam("name") String name) {
+        return messageService.greet(name);
+    }
+    
+    @GET
+    @Path("/recent")
+    @Produces(MediaType.APPLICATION_JSON)
+    public RecentMessagesResponse getRecentMessages() {
+        return messageService.getRecentMessages();
     }
 }

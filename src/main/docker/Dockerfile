@@ -24,7 +24,21 @@ RUN chown -R jetty:jetty /opt/jetty
 ADD code-1.0.war /opt/jetty/webapps/root.war
 RUN chown -R jetty:jetty /opt/jetty/webapps/root.war
 
+# Postgresql
+RUN sudo apt-get install -y postgresql postgresql-contrib
+USER postgres
+RUN /etc/init.d/postgresql start &&\
+    psql --command "CREATE USER docker WITH SUPERUSER PASSWORD 'docker';" &&\
+    createdb -O docker docker
+
+
 EXPOSE 8080
+EXPOSE 5432
 RUN cd /opt/jetty
 
-CMD ["java", "-Djetty.home=/opt/jetty", "-jar", "/opt/jetty/start.jar"]
+CMD /etc/init.d/postgresql start && java -Djetty.home=/opt/jetty -jar /opt/jetty/start.jar
+
+
+
+
+

@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
 import com.codechallenge.rest.service.MessageService;
 
 
-@Path("/messages")
+@Path("/")
 @Component
 public class MessageResource {
 

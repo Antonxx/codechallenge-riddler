@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="namesCtrl">
+    <h2>Code Challenge Messanger</h2>
+
+    <p><textarea style="resize:none" ng-model="name" cols="30" rows="1"></textarea></p>
+    <p>
+        <button ng-click="create()">Create</button>
+        <button ng-click="show()">Show messages</button>
+    </p>
+    <p> Last messages:</p>
+    <ul>
+        <li ng-repeat="msg in messages">
+            {{ msg.content }}
+        </li>
+    </ul>
+
+</div>
+<script src="js/namesController.js"></script>
+
+
+</body>
+</html>

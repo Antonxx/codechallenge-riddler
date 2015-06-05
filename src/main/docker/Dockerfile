@@ -21,8 +21,9 @@ RUN useradd jetty -U -s /bin/false
 RUN chown -R jetty:jetty /opt/jetty
 
 # Copy apps
-ADD code-1.0.war /opt/jetty/webapps/root.war
-RUN chown -R jetty:jetty /opt/jetty/webapps/root.war
+ADD code-1.0.war /opt/jetty/webapps/code.war
+ADD context.xml /opt/jetty/webapps/code.xml
+RUN chown -R jetty:jetty /opt/jetty/webapps/code.war
 
 # Postgresql
 RUN sudo apt-get install -y postgresql postgresql-contrib
